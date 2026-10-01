@@ -7,7 +7,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "web05": {
+    "casa-da-quimica": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -65,10 +65,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "web05:build:production"
+              "buildTarget": "casa-da-quimica:build:production"
             },
             "development": {
-              "buildTarget": "web05:build:development"
+              "buildTarget": "casa-da-quimica:build:development"
             }
           },
           "defaultConfiguration": "development"

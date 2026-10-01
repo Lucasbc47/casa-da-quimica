@@ -1,13 +1,13 @@
 {
-  "name": "web05",
-  "version": "0.0.0",
+  "name": "casa-da-quimica",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:web05": "node dist/web05/server/server.mjs"
+    "serve:ssr:casa-da-quimica": "node dist/casa-da-quimica/server/server.mjs"
   },
   "private": true,
   "packageManager": "npm@11.17.0",
