@@ -2,6 +2,8 @@
 
 Loja virtual de material de laboratório, feita em Angular, com temática Breaking Bad.
 
+**Site:** https://lucasbc47.github.io/casa-da-quimica/
+
 ## Integrantes
 
 | Nome | RA |
