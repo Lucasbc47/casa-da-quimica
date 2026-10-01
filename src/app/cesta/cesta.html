@@ -1,0 +1,68 @@
+<div class="caixa">
+  <h3 class="mb-3"><i class="bi bi-basket"></i> Cesta</h3>
+
+  <div class="alert alert-info mb-0" *ngIf="cesta.itens.length <= 0">
+    Sua cesta está vazia. <a routerLink="/vitrine" class="alert-link">Ir para a vitrine</a>
+  </div>
+
+  <div *ngIf="cesta.itens.length > 0">
+    <div class="table-responsive">
+      <table class="table align-middle">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th class="text-center">Qtd</th>
+            <th class="text-end">Valor</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of cesta.itens">
+              <td>
+                <a [routerLink]="['/detalhe', item.produto.codigo]" class="text-decoration-none">
+                  <span class="badge text-bg-success me-1">{{ item.produto.simbolo }}</span>
+                  {{ item.produto.nome }}
+                </a>
+              </td>
+              <td class="text-center text-nowrap">
+                <button class="btn btn-sm btn-outline-secondary" (click)="cesta.diminuir(item)" aria-label="Diminuir">
+                  <i class="bi bi-dash"></i>
+                </button>
+                <span class="mx-2">{{ item.quantidade }}x</span>
+                <button
+                  class="btn btn-sm btn-outline-secondary"
+                  (click)="cesta.adicionar(item.produto)"
+                  [disabled]="item.quantidade >= item.produto.quantidade"
+                  aria-label="Aumentar"
+                >
+                  <i class="bi bi-plus"></i>
+                </button>
+              </td>
+              <td class="text-end text-nowrap">{{ cesta.precoItem(item) | currency: 'BRL' }}</td>
+              <td class="text-end">
+                <button class="btn btn-sm btn-outline-danger" (click)="cesta.remover(item)" title="Remover">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th colspan="2" class="fs-5">Total</th>
+            <th class="text-end fs-5 preco text-nowrap">{{ cesta.total() | currency: 'BRL' }}</th>
+            <th></th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="d-flex flex-column flex-sm-row justify-content-between gap-2">
+      <button class="btn btn-outline-danger" (click)="limpar()">
+        <i class="bi bi-trash"></i> Limpar cesta
+      </button>
+      <button class="btn btn-lab btn-lg" (click)="finalizar()">
+        <i class="bi bi-check2-circle"></i> Finalizar
+      </button>
+    </div>
+  </div>
+</div>

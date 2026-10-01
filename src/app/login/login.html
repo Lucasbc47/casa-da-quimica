@@ -1,0 +1,60 @@
+<div class="caixa">
+  <div class="row g-4">
+    <!-- Já tenho cadastro -->
+    <div class="col-12 col-md-6 border-md-end">
+      <h3>Já tenho cadastro</h3>
+
+      <div class="alert alert-success" *ngIf="logado">
+        <strong>Bem-vindo(a)!</strong> Login realizado com sucesso.
+      </div>
+
+      <!-- was-validated: o Bootstrap pinta os campos depois que tenta enviar -->
+      <form #f="ngForm" (ngSubmit)="entrar(f)" [class.was-validated]="f.submitted" novalidate>
+        <div class="mb-3">
+          <label for="txtEmail" class="form-label">E-mail</label>
+          <input type="email" class="form-control" id="txtEmail" name="email"
+            [(ngModel)]="email" placeholder="seu@email.com" required email />
+          <div class="invalid-feedback">Informe um e-mail válido.</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="txtSenha" class="form-label">Senha</label>
+          <input type="password" class="form-control" id="txtSenha" name="senha"
+            [(ngModel)]="senha" placeholder="Sua senha" required minlength="6" />
+          <div class="invalid-feedback">A senha precisa ter pelo menos 6 caracteres.</div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center">
+          <button type="button" class="btn btn-link px-0 text-success" data-bs-toggle="modal" data-bs-target="#modalEsqueci">
+            Esqueci minha senha
+          </button>
+          <button type="submit" class="btn btn-lab">Entrar</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Ainda não tenho cadastro -->
+    <div class="col-12 col-md-6 text-center d-flex flex-column justify-content-center">
+      <h3>Ainda não tenho cadastro</h3>
+      <p class="text-muted">Crie sua conta em poucos segundos. Não precisa de diploma em química.</p>
+      <div>
+        <a routerLink="/cadastro" class="btn btn-amarelo btn-lg">Clique aqui</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal "Esqueci minha senha" -->
+<div class="modal fade" id="modalEsqueci" tabindex="-1" aria-labelledby="tituloEsqueci" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="tituloEsqueci">Esqueci minha senha</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body">
+        <app-reenvio></app-reenvio>
+      </div>
+    </div>
+  </div>
+</div>

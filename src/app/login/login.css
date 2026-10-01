@@ -1,0 +1,5 @@
+@media (min-width: 768px) {
+  .border-md-end {
+    border-right: 1px solid #dee2e6;
+  }
+}

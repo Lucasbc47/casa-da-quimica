@@ -1,0 +1,72 @@
+<header class="topo">
+  <div class="container py-3">
+    <div class="row align-items-center g-3">
+      <div class="col-7 col-md-3">
+        <a routerLink="/" class="marca">
+          <img src="logo-breaking-bad.png" class="logo" alt="Breaking Bad" />
+          <span class="marca-texto">Casa da Química</span>
+        </a>
+      </div>
+
+      <div class="col-5 col-md-3 order-md-3 text-end">
+        <a routerLink="/cesta" class="icone-topo me-4" title="Cesta">
+          <i class="bi bi-basket"></i>
+          <span class="badge rounded-pill text-bg-warning" *ngIf="cesta.quantidadeTotal() > 0">
+            {{ cesta.quantidadeTotal() }}
+          </span>
+        </a>
+        <a routerLink="/login" class="icone-topo" title="Entrar / Cadastro">
+          <i class="bi bi-person-circle"></i>
+        </a>
+      </div>
+
+      <div class="col-12 col-md-6 order-md-2">
+        <app-barrabusca></app-barrabusca>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-md navbar-dark menu py-1">
+    <div class="container">
+      <span class="navbar-brand d-md-none titulo">Menu</span>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#menuPrincipal"
+        aria-controls="menuPrincipal"
+        aria-expanded="false"
+        aria-label="Abrir menu"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="menuPrincipal">
+        <ul class="navbar-nav gap-md-4">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/vitrine" routerLinkActive="active">Vitrine</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/cesta" routerLinkActive="active">Cesta</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login" routerLinkActive="active">Entrar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/cadastro" routerLinkActive="active">Cadastro</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="container py-4">
+  <router-outlet />
+</main>
+
+<footer class="rodape">
+  <div class="container py-4 text-center">
+    <p class="mb-1"><strong>Casa da Química</strong></p>
+    <p class="mb-0">Albuquerque, NM · Material de laboratório para fins educacionais.</p>
+  </div>
+</footer>

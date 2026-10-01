@@ -1,0 +1,67 @@
+<div class="caixa">
+  <h3 class="mb-3">Cadastro</h3>
+
+  <div class="alert alert-success" *ngIf="enviado">
+    <strong>Parabéns, {{ cliente.nome }}!</strong> Seu cadastro foi realizado com sucesso.
+    <a routerLink="/login" class="alert-link">Fazer login</a>
+  </div>
+
+  <!-- was-validated: o Bootstrap pinta os campos depois que tenta enviar -->
+  <form #f="ngForm" (ngSubmit)="cadastrar(f)" [class.was-validated]="f.submitted" novalidate *ngIf="!enviado">
+    <div class="row g-3">
+      <div class="col-12">
+        <label for="txtNome" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="txtNome" name="nome"
+          [(ngModel)]="cliente.nome" placeholder="Seu nome completo" required minlength="3" />
+        <div class="invalid-feedback">Informe seu nome (mínimo 3 letras).</div>
+      </div>
+
+      <div class="col-12">
+        <label for="txtEmail" class="form-label">E-mail</label>
+        <input type="email" class="form-control" id="txtEmail" name="email"
+          [(ngModel)]="cliente.email" placeholder="seu@email.com" required email />
+        <div class="invalid-feedback">Informe um e-mail válido.</div>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <label for="txtSenha" class="form-label">Senha</label>
+        <input type="password" class="form-control" id="txtSenha" name="senha"
+          [(ngModel)]="cliente.senha" placeholder="Mínimo 8 caracteres" required
+          pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}" />
+        <div class="invalid-feedback">Mínimo 8 caracteres, com letra maiúscula, minúscula e número.</div>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <label for="txtConfirma" class="form-label">Confirmar senha</label>
+        <input type="password" class="form-control" id="txtConfirma" name="confirmaSenha"
+          [(ngModel)]="confirmaSenha" placeholder="Repita a senha" required />
+        <div class="invalid-feedback">Repita a senha.</div>
+      </div>
+
+      <div class="col-12" *ngIf="senhasDiferentes()">
+        <div class="alert alert-danger mb-0">As senhas não conferem.</div>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <label for="txtCpf" class="form-label">CPF</label>
+        <input type="text" class="form-control" id="txtCpf" name="cpf"
+          [(ngModel)]="cliente.cpf" placeholder="000.000.000-00" required
+          pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}" />
+        <div class="invalid-feedback">CPF no formato 000.000.000-00.</div>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <label for="txtTelefone" class="form-label">Telefone</label>
+        <input type="tel" class="form-control" id="txtTelefone" name="telefone"
+          [(ngModel)]="cliente.telefone" placeholder="(11) 91234-5678" required
+          pattern="\(?\d{2}\)?\s?\d{4,5}-?\d{4}" />
+        <div class="invalid-feedback">Telefone no formato (11) 91234-5678.</div>
+      </div>
+
+      <div class="col-12 d-flex flex-column flex-sm-row justify-content-between gap-2 mt-4">
+        <a routerLink="/login" class="btn btn-outline-secondary">Já tenho cadastro</a>
+        <button type="submit" class="btn btn-lab btn-lg">Cadastrar</button>
+      </div>
+    </div>
+  </form>
+</div>

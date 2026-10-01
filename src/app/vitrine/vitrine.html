@@ -1,0 +1,42 @@
+<div class="caixa mb-4 text-center">
+  <h2 class="mb-1">Vitrine</h2>
+  <p class="text-muted mb-0">Tudo para o seu laboratório escolar.</p>
+</div>
+
+<div class="alert alert-warning" *ngIf="lista.length <= 0">
+  <strong>Vazio!</strong> Não existem produtos na vitrine.
+</div>
+
+<div class="row g-4">
+  <div class="col-12 col-sm-6 col-lg-4 col-xl-3" *ngFor="let obj of lista">
+    <div class="card card-produto h-100">
+      <div class="p-2">
+        <!-- Ao clicar na foto vai para a página de detalhe -->
+        <a class="foto-produto" routerLink="/detalhe/{{ obj.codigo }}" title="Ver detalhes">
+          <img src="produtos/{{ obj.codigo }}.jpg" alt="{ { obj.nome }}" />
+          <span class="elemento-mini"><small>{{ obj.codigo }}</small>{{ obj.simbolo }}</span>
+          <span class="selo badge text-bg-warning" *ngIf="obj.destaque > 0">Destaque</span>
+        </a>
+      </div>
+
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title">{{ obj.nome }}</h5>
+
+        <div class="mt-auto d-flex flex-wrap justify-content-between align-items-end gap-2">
+          <div *ngIf="obj.promo > 0">
+            <div class="preco-antigo">{{ obj.valor | currency: 'BRL' }}</div>
+            <div class="preco">{{ obj.promo | currency: 'BRL' }}</div>
+          </div>
+          <div *ngIf="obj.promo <= 0">
+            <div class="preco">{{ obj.valor | currency: 'BRL' }}</div>
+          </div>
+
+          <button class="btn btn-lab" *ngIf="obj.quantidade > 0" (click)="comprar(obj)">
+            <i class="bi bi-basket"></i> Comprar
+          </button>
+          <span class="badge text-bg-secondary" *ngIf="obj.quantidade <= 0">Esgotado</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

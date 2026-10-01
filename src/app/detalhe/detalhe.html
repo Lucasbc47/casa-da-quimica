@@ -1,0 +1,45 @@
+<div class="alert alert-warning" *ngIf="!produto">
+  <strong>Ops!</strong> Produto não encontrado.
+  <a routerLink="/vitrine" class="alert-link">Voltar para a vitrine</a>
+</div>
+
+<div class="caixa" *ngIf="produto">
+  <div class="row g-4">
+    <div class="col-12 col-md-5">
+      <div class="foto-produto">
+        <img src="produtos/{{ produto.codigo }}.jpg" alt="{{ produto.nome }}" />
+        <span class="elemento-mini"><small>{{ produto.codigo }}</small>{{ produto.simbolo }}</span>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-7">
+      <h2>{{ produto.nome }}</h2>
+      <span class="badge text-bg-warning mb-2" *ngIf="produto.destaque > 0">Destaque</span>
+      <p>{{ produto.descritivo }}</p>
+
+      <div *ngIf="produto.promo > 0">
+        <div class="preco-antigo">de {{ produto.valor | currency: 'BRL' }}</div>
+        <div class="preco fs-3">por {{ produto.promo | currency: 'BRL' }}</div>
+      </div>
+      <div *ngIf="produto.promo <= 0">
+        <div class="preco fs-3">{{ produto.valor | currency: 'BRL' }}</div>
+      </div>
+
+      <p class="text-muted" *ngIf="produto.quantidade > 0">
+        Em estoque: {{ produto.quantidade }} unidade(s)
+      </p>
+      <div class="alert alert-danger mt-3" *ngIf="produto.quantidade <= 0">
+        Produto indisponível no momento.
+      </div>
+
+      <div class="d-flex flex-wrap gap-2 mt-3">
+        <a routerLink="/vitrine" class="btn btn-outline-secondary">
+          <i class="bi bi-arrow-left"></i> Voltar
+        </a>
+        <button class="btn btn-lab" *ngIf="produto.quantidade > 0" (click)="comprar()">
+          <i class="bi bi-basket"></i> Comprar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

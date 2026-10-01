@@ -1,0 +1,250 @@
+/* Identidade visual: Casa da Química */
+:root {
+  --verde-escuro: #0f2e1d;
+  --verde: #2e8b57;
+  --verde-claro: #3fa760;
+  --amarelo: #f2c94c;
+  --fundo: #f3f5f0;
+  --fonte-titulo: 'Oswald', Arial, sans-serif;
+  --fonte-texto: 'Roboto', Arial, sans-serif;
+  --fonte-simbolo: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--fonte-texto);
+  background-color: var(--fundo);
+  color: #1d2b22;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.titulo {
+  font-family: var(--fonte-titulo);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Cabeçalho */
+.topo {
+  background-color: var(--verde-escuro);
+  color: white;
+}
+
+.marca {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.logo {
+  max-width: 170px;
+  width: 100%;
+  display: block;
+}
+
+.marca-texto {
+  display: block;
+  color: var(--amarelo);
+  font-family: var(--fonte-titulo);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
+
+.icone-topo {
+  color: white;
+  font-size: 1.8rem;
+  text-decoration: none;
+  position: relative;
+}
+
+.icone-topo:hover {
+  color: var(--amarelo);
+}
+
+.icone-topo .badge {
+  position: absolute;
+  top: -4px;
+  right: -12px;
+  font-size: 0.7rem;
+}
+
+/* Menu */
+.menu {
+  background-color: var(--verde);
+  border-top: 3px solid var(--amarelo);
+}
+
+.menu .nav-link {
+  color: white;
+  font-family: var(--fonte-titulo);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.menu .nav-link:hover,
+.menu .nav-link.active {
+  color: var(--amarelo);
+}
+
+/* Botões no tema */
+.btn-lab {
+  background-color: var(--verde);
+  border-color: var(--verde);
+  color: white;
+}
+
+.btn-lab:hover {
+  background-color: var(--verde-escuro);
+  border-color: var(--verde-escuro);
+  color: var(--amarelo);
+}
+
+.btn-amarelo {
+  background-color: var(--amarelo);
+  border-color: var(--amarelo);
+  color: var(--verde-escuro);
+  font-weight: 500;
+}
+
+.btn-amarelo:hover {
+  background-color: #dcb43a;
+  border-color: #dcb43a;
+  color: var(--verde-escuro);
+}
+
+.btn-lab:disabled,
+.btn-amarelo:disabled {
+  opacity: 0.6;
+}
+
+.btn-lab:disabled {
+  background-color: var(--verde);
+  border-color: var(--verde);
+  color: white;
+}
+
+.btn-amarelo:disabled {
+  background-color: var(--amarelo);
+  border-color: var(--amarelo);
+  color: var(--verde-escuro);
+}
+
+/* Botões desabilitados mantêm a cor do tema */
+.btn-lab:disabled {
+  background-color: var(--verde);
+  border-color: var(--verde);
+  color: white;
+  opacity: 0.6;
+}
+
+.btn-amarelo:disabled {
+  background-color: var(--amarelo);
+  border-color: var(--amarelo);
+  color: var(--verde-escuro);
+  opacity: 0.6;
+}
+
+/* Foto do produto com o "elemento químico" por cima, estilo abertura da série */
+.foto-produto {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  aspect-ratio: 4 / 3;
+  background-color: #e9ece6;
+}
+
+.foto-produto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+a.foto-produto:hover img {
+  transform: scale(1.06);
+}
+
+.elemento-mini {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--verde-claro), #1c5e36);
+  border: 2px solid white;
+  color: white;
+  font-family: var(--fonte-simbolo);
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.elemento-mini small {
+  position: absolute;
+  top: 1px;
+  left: 4px;
+  font-family: var(--fonte-texto);
+  font-size: 0.6rem;
+  font-weight: 700;
+}
+
+.selo {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+/* Cards */
+.card-produto {
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.preco {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--verde);
+}
+
+.preco-antigo {
+  color: #888;
+  text-decoration: line-through;
+  font-size: 0.9rem;
+}
+
+/* Caixas brancas das páginas (cesta, login etc.) */
+.caixa {
+  background: white;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Rodapé */
+.rodape {
+  background-color: var(--verde-escuro);
+  color: #cfd8d2;
+  font-size: 0.9rem;
+}
+
+.rodape strong {
+  color: var(--amarelo);
+}

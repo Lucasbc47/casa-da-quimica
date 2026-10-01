@@ -1,0 +1,14 @@
+<div class="alert alert-success mb-0" *ngIf="enviado">
+  Pronto! Se <strong>{{ email }}</strong> estiver cadastrado, você vai receber um link para criar
+  uma nova senha.
+</div>
+
+<form #f="ngForm" (ngSubmit)="enviar(f)" [class.was-validated]="f.submitted" novalidate *ngIf="!enviado">
+  <label for="txtEmailReenvio" class="form-label">Informe o seu e-mail</label>
+  <div class="input-group has-validation">
+    <input type="email" class="form-control" id="txtEmailReenvio" name="email"
+      [(ngModel)]="email" placeholder="seu@email.com" required email />
+    <button class="btn btn-lab" type="submit">OK</button>
+    <div class="invalid-feedback">Informe um e-mail válido.</div>
+  </div>
+</form>
